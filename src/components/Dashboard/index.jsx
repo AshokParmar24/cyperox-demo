@@ -29,7 +29,7 @@ const categories = ["Food", "Bills", "Salary", "Entertainment", "Other"];
 const Dashboard = () => {
     const [transactions, setTransactions] = useState([]);
     const [editIndex, setEditIndex] = useState(null);
-    
+
 
     const {
         handleSubmit,
@@ -287,71 +287,88 @@ const Dashboard = () => {
             <Typography variant="h6" gutterBottom>
                 Filters
             </Typography>
-            <div style={{ display: "flex", gap: "16px", marginBottom: "16px" }}>
-                <Select
-                    name="category"
-                    value={filters.category}
-                    onChange={handleFilterChange}
-                    displayEmpty
-                    fullWidth
-                >
-                    <MenuItem value="">All Categories</MenuItem>
-                    {categories.map((category) => (
-                        <MenuItem key={category} value={category}>
-                            {category}
-                        </MenuItem>
-                    ))}
-                </Select>
-                <TextField
-                    name="startDate"
-                    label="Start Date"
-                    type="date"
-                    InputLabelProps={{ shrink: true }}
-                    value={filters.startDate}
-                    onChange={handleFilterChange}
-                    fullWidth
-                />
-                <TextField
-                    name="endDate"
-                    label="End Date"
-                    type="date"
-                    InputLabelProps={{ shrink: true }}
-                    value={filters.endDate}
-                    onChange={handleFilterChange}
-                    fullWidth
-                />
-                <TextField
-                    name="search"
-                    label="Search by Title"
-                    value={filters.search}
-                    onChange={handleFilterChange}
-                    fullWidth
-                />
-                <Select
-                    name="type"
-                    value={filters.type}
-                    onChange={handleFilterChange}
-                    displayEmpty
-                    fullWidth
-                >
-                    <MenuItem value="">All</MenuItem>
-                    <MenuItem value="income">Income</MenuItem>
-                    <MenuItem value="expense">Expense</MenuItem>
-                </Select>
-            </div>
-            <Box>
-                <Button variant="contained"
-                    sx={{ padding: "10px 20px", marginBottom: "16px" }}
-                    color="primary" onClick={() => {
-                        setFilters({
-                            category: "",
-                            startDate: "",
-                            endDate: "",
-                            search: "",
-                            type: ""
-                        });
-                    }}>Rest filter</Button>
-            </Box>
+            <Grid container spacing={2} style={{ marginTop: "24px", marginTop: "24px" }}>
+                <Grid size={{ xs: 12, md: 6 }}  >
+                    <TextField
+                        name="search"
+                        label="Search by Title"
+                        value={filters.search}
+                        onChange={handleFilterChange}
+                        fullWidth
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}  >
+
+
+                    <Select
+                        name="category"
+                        value={filters.category}
+                        onChange={handleFilterChange}
+                        displayEmpty
+                        fullWidth
+                    >
+                        <MenuItem value="">All Categories</MenuItem>
+                        {categories.map((category) => (
+                            <MenuItem key={category} value={category}>
+                                {category}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}  >
+                    <TextField
+                        name="startDate"
+                        label="Start Date"
+                        type="date"
+                        InputLabelProps={{ shrink: true }}
+                        value={filters.startDate}
+                        onChange={handleFilterChange}
+                        fullWidth
+                    />
+                </Grid>  <Grid size={{ xs: 12, md: 6 }}  >
+                    <TextField
+                        name="endDate"
+                        label="End Date"
+                        type="date"
+                        InputLabelProps={{ shrink: true }}
+                        value={filters.endDate}
+                        onChange={handleFilterChange}
+                        fullWidth
+                    />
+                </Grid>
+
+                <Grid size={{ xs: 12, md: 6 }}  >
+
+                    <Select
+                        name="type"
+                        value={filters.type}
+                        onChange={handleFilterChange}
+                        displayEmpty
+                        fullWidth
+                    >
+                        <MenuItem value="">All</MenuItem>
+                        <MenuItem value="income">Income</MenuItem>
+                        <MenuItem value="expense">Expense</MenuItem>
+                    </Select>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}  >
+
+                    <Button variant="contained"
+                        fullWidth
+                        sx={{ height: "55px" }}
+                        color="primary" onClick={() => {
+                            setFilters({
+                                category: "",
+                                startDate: "",
+                                endDate: "",
+                                search: "",
+                                type: ""
+                            });
+                        }}>Rest filter</Button>
+                </Grid>
+            </Grid>
+
+
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
