@@ -152,7 +152,7 @@ const Dashboard = () => {
                     <Box>  <Typography variant="h5" gutterBottom style={{ marginTop: "24px" }}>
                         Breakdown by Category
                     </Typography>
-                        <Box style={{ height: "300px" }}>
+                        <Box style={{ height: "400px" }}>
                             <Pie
                                 data={{
                                     labels: categories,
